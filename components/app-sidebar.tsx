@@ -1,14 +1,13 @@
 import React from "react";
+import Link from "next/link";
 import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuButton,
     SidebarSeparator,
 } from "./ui/sidebar";
-import Link from "next/link";
 import Image from "next/image";
 import { NavMenu } from "./nav-menu";
 import { dashboardMenu, footerMenu } from "@/static/sidebar.static";
@@ -21,34 +20,37 @@ export default function AppSidebar({
 }) {
     return (
         <Sidebar variant="sidebar" {...props}>
-            <SidebarHeader>
+            <SidebarHeader className="px-4 pt-5 pb-4">
                 <SidebarMenu>
-                    <div className="w-full flex justify-center items-center gap-4">
-                        <div className="relative flex aspect-square size-12 items-center justify-center rounded-lg  text-sidebar-primary-foreground">
+                    <Link
+                        href="/"
+                        className="w-full flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-(--logo-primary)/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#121144] rounded-lg -m-1 p-1 transition-opacity hover:opacity-95"
+                    >
+                        <div className="relative flex aspect-square size-11 shrink-0 items-center justify-center rounded-lg overflow-hidden bg-white/5 text-sidebar-primary-foreground">
                             <Image
                                 src="/logo/choicefavicon.ico"
-                                alt="Logo"
+                                alt="Choice CRM"
                                 fill
                                 unoptimized
-                                className="object-contain"
+                                className="object-contain p-1"
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <p className="text-[#fdde80] text-4xl font-normal">
+                        <div className="flex flex-col min-w-0">
+                            <span className="text-yellow-logo text-2xl font-semibold tracking-tight leading-none">
                                 Choice
-                            </p>
-                            <p className="text-[#fdde80] text-[12px] uppercase">
+                            </span>
+                            <span className="text-yellow-logo/90 text-[11px] font-medium uppercase tracking-widest mt-0.5">
                                 Community Health
-                            </p>
+                            </span>
                         </div>
-                    </div>
+                    </Link>
                 </SidebarMenu>
             </SidebarHeader>
-            <SidebarContent>
-                <NavMenu items={dashboardMenu} title="MENU" />
+            <SidebarContent className="px-2">
+                <NavMenu items={dashboardMenu} title="Menu" />
             </SidebarContent>
-            <SidebarSeparator />
-            <SidebarFooter>
+            <SidebarSeparator className="bg-white/10" />
+            <SidebarFooter className="px-2 pb-4">
                 <NavFooter items={footerMenu} />
             </SidebarFooter>
         </Sidebar>

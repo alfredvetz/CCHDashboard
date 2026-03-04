@@ -51,26 +51,23 @@ export function NavMenu({
 
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>{title}</SidebarGroupLabel>
-            <SidebarMenu>
+            <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.15em] text-sidebar-foreground/50 px-3 py-2">
+                {title}
+            </SidebarGroupLabel>
+            <SidebarMenu className="gap-0.5">
                 {items.map((item) => {
                     const Icon = iconMap[item.icon] || LucideIcons.Circle;
+                    const isActive = isActiveRoute(item.url);
 
                     return (
                         <SidebarMenuItem key={item.name}>
                             <SidebarMenuButton
-                                className="hover:bg-royal-blue"
+                                className="rounded-lg h-10 px-3 font-medium transition-colors hover:bg-royal-blue/90 hover:text-white data-[active=true]:bg-royal-blue data-[active=true]:text-white"
                                 asChild
+                                isActive={isActive}
                             >
-                                <Link
-                                    href={item.url}
-                                    className={`${
-                                        isActiveRoute(item.url)
-                                            ? "bg-royal-blue"
-                                            : ""
-                                    } py-5`}
-                                >
-                                    <Icon />
+                                <Link href={item.url}>
+                                    <Icon className="size-4 shrink-0" />
                                     <span className="text-sm">{item.name}</span>
                                 </Link>
                             </SidebarMenuButton>

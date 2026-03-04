@@ -82,9 +82,9 @@
     --sidebar-foreground: #ffffff;
     --sidebar-primary: #ffffff;
     --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: #121144;
+    --sidebar-accent: rgba(45, 117, 175, 0.25);
     --sidebar-accent-foreground: #ffffff;
-    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-border: rgba(255, 255, 255, 0.12);
     --sidebar-ring: oklch(0.708 0 0);
     --logo-primary: #fdde80;
     --deep-navy: #121144;

@@ -539,9 +539,9 @@ export function JustCallSidebarWidget() {
 
     if (!isInitialized) {
         return (
-            <div className="border-t border-sidebar-border px-2 pt-2">
+            <div className="px-2 pt-2">
                 <div className="flex items-center gap-2 text-xs text-sidebar-foreground/70">
-                    <Spinner className="h-3 w-3" />
+                    <Spinner className="h-3 w-3 text-royal-blue" />
                     <span>Initializing JustCall...</span>
                 </div>
             </div>
@@ -565,7 +565,7 @@ export function JustCallSidebarWidget() {
                     ) : isLoggedIn ? (
                         <Badge
                             variant="outline"
-                            className="shrink-0 text-xs bg-royal-blue/15 text-royal-blue border-royal-blue/40 font-medium"
+                            className="shrink-0 text-xs bg-royal-blue/20 text-royal-blue border-royal-blue/50 font-medium"
                         >
                             <CheckCircle2 className="h-3 w-3 mr-1" />
                             Ready
@@ -573,7 +573,7 @@ export function JustCallSidebarWidget() {
                     ) : (
                         <Badge
                             variant="outline"
-                            className="shrink-0 text-xs bg-sidebar-foreground/10 text-sidebar-foreground/80 border-sidebar-border"
+                            className="shrink-0 text-xs bg-white/10 text-sidebar-foreground/80 border-white/20"
                         >
                             Not Connected
                         </Badge>
@@ -599,12 +599,12 @@ export function JustCallSidebarWidget() {
                 )}
 
                 {!isLoggedIn ? (
-                    <Button
-                        onClick={handleOpenAuth}
-                        variant="outline"
-                        size="sm"
-                        className="w-full text-xs rounded-md border-sidebar-border bg-transparent cursor-pointer text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                    >
+                        <Button
+                            onClick={handleOpenAuth}
+                            variant="outline"
+                            size="sm"
+                            className="w-full text-xs rounded-lg border-white/20 bg-white/5 text-sidebar-foreground hover:bg-royal-blue/90 hover:border-royal-blue/50 hover:text-white transition-colors"
+                        >
                         <LogIn className="h-3 w-3 mr-2" />
                         Connect JustCall
                     </Button>
@@ -615,7 +615,7 @@ export function JustCallSidebarWidget() {
                                 onClick={handleOpenCallDialer}
                                 variant="outline"
                                 size="sm"
-                                className="h-8 w-8 p-0 shrink-0 rounded-md border-sidebar-border bg-transparent text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                                className="h-8 w-8 p-0 shrink-0 rounded-lg border-white/20 bg-white/5 text-sidebar-foreground hover:bg-royal-blue/90 hover:border-royal-blue/50 hover:text-white transition-colors"
                                 title="Open Call Dialer"
                             >
                                 <Phone className="h-4 w-4" />
@@ -624,7 +624,7 @@ export function JustCallSidebarWidget() {
                                 onClick={handleOpenSMSDialer}
                                 variant="outline"
                                 size="sm"
-                                className="h-8 w-8 p-0 shrink-0 rounded-md border-sidebar-border bg-transparent text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                                className="h-8 w-8 p-0 shrink-0 rounded-lg border-white/20 bg-white/5 text-sidebar-foreground hover:bg-royal-blue/90 hover:border-royal-blue/50 hover:text-white transition-colors"
                                 title="Open SMS Dialer"
                             >
                                 <MessageSquare className="h-4 w-4" />
