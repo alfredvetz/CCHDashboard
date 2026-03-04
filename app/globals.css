@@ -111,9 +111,9 @@
     --border: rgba(18, 17, 68, 0.12);
     --input-background: var(--input);
     --ring: rgba(18, 17, 68, 0.5);
-    --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
-    --font-secondary: "Plus Jakarta Sans", system-ui, sans-serif;
-    --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-heading: var(--font-plus-jakarta, "Plus Jakarta Sans"), system-ui, sans-serif;
+    --font-secondary: var(--font-plus-jakarta, "Plus Jakarta Sans"), system-ui, sans-serif;
+    --font-body: var(--font-plus-jakarta, "Plus Jakarta Sans"), system-ui, sans-serif;
     --font-weight-normal: 400;
     --font-weight-medium: 600;
     --letterspace-tight: 0.015em;

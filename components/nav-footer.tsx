@@ -24,7 +24,7 @@ export function NavFooter({
 }) {
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden space-y-2">
-            <div className="px-2 pt-2 border-t border-white/10">
+            <div className="px-2 pt-2">
                 <JustCallSidebarWidget />
             </div>
             <SidebarMenu className="gap-0.5">
