@@ -1,5 +1,6 @@
 import AppSidebar from "@/components/app-sidebar";
 import FilterDashboard from "@/components/filter-dashboard";
+import { FiltersProvider } from "@/contexts/filters-context";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -24,6 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
+                <FiltersProvider>
                 <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center px-6 bg-white border-b border-slate-100">
                     <div className="w-full flex flex-col md:flex-row justify-between gap-2">
                         <div className="flex items-center gap-2 px-2">
@@ -61,6 +63,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="flex flex-1 flex-col bg-[#FDFDFF] p-8 max-w-7xl mx-auto w-full space-y-8">
                     {children}
                 </div>
+                </FiltersProvider>
             </SidebarInset>
         </SidebarProvider>
     );

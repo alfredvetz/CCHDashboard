@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import { useDashboardData } from "@/hooks/use-dashboard-data";
-import { useFilters } from "@/hooks/use-filters";
+import { useFiltersContext } from "@/contexts/filters-context";
 import { useImpersonation } from "@/hooks/use-impersonation";
 import { useExistingClientsData } from "@/hooks/use-existing-clients-data";
 import RevenueBreakdownChart from "./revenue-breakdown-chart";
@@ -72,36 +72,12 @@ export default function DashboardContent() {
         );
     }, [effectiveRole]);
 
-    const initialSelectedAreas = useMemo(() => {
-        const role = effectiveRole?.toLowerCase();
-        if (role === "admin" || role === "business development") {
-            return [];
-        }
-
-        if (role === "community lead" && effectiveCommunityName) {
-            return [effectiveCommunityName];
-        }
-        if (role === "area manager" && effectiveAreaName) {
-            return [effectiveAreaName];
-        }
-
-        return [];
-    }, [effectiveRole, effectiveAreaName, effectiveCommunityName]);
-
-    const isFilterLocked = useMemo(() => {
-        const role = effectiveRole?.toLowerCase();
-        return role === "area manager" || role === "community lead";
-    }, [effectiveRole]);
-
     const isCommunityLead = useMemo(() => {
         const role = effectiveRole?.toLowerCase();
         return role === "community lead";
     }, [effectiveRole]);
 
-    const filters = useFilters({
-        initialSelectedAreas,
-        isFilterLocked,
-    });
+    const filters = useFiltersContext();
 
     const areaForApi = useMemo(() => {
         if (isAreaRestricted && effectiveAreaName) {

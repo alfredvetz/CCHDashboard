@@ -1,5 +1,5 @@
 "use client";
-import { useFilters } from "@/hooks/use-filters";
+import { useFiltersContext } from "@/contexts/filters-context";
 import { useImpersonation } from "@/hooks/use-impersonation";
 import React, { useMemo, useState } from "react";
 import { FilterBar } from "./filter-bar";
@@ -7,7 +7,7 @@ import { useAreas } from "@/hooks/use-areas";
 
 export default function FilterDashboard() {
     const { areas } = useAreas();
-    const [currentUserProfile, setCurrentUserProfile] = useState<{
+    const [currentUserProfile] = useState<{
         role?: string;
         area_uuid?: string | null;
         area_name?: string | null;
@@ -46,31 +46,7 @@ export default function FilterDashboard() {
         ? effectiveUser.area_name
         : currentUserProfile?.area_name;
 
-    const isFilterLocked = useMemo(() => {
-        const role = effectiveRole?.toLowerCase();
-        return role === "area manager" || role === "community lead";
-    }, [effectiveRole]);
-
-    const initialSelectedAreas = useMemo(() => {
-        const role = effectiveRole?.toLowerCase();
-        if (role === "admin" || role === "business development") {
-            return [];
-        }
-
-        if (role === "community lead" && effectiveCommunityName) {
-            return [effectiveCommunityName];
-        }
-        if (role === "area manager" && effectiveAreaName) {
-            return [effectiveAreaName];
-        }
-
-        return [];
-    }, [effectiveRole, effectiveAreaName, effectiveCommunityName]);
-
-    const filters = useFilters({
-        initialSelectedAreas,
-        isFilterLocked,
-    });
+    const filters = useFiltersContext();
 
     const isCommunityLead = useMemo(() => {
         const role = effectiveRole?.toLowerCase();
